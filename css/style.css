@@ -14,6 +14,7 @@ body {
 
 .container {
   width: 80%;
+  max-width: 80%;
   margin: auto;
 }
 
@@ -37,13 +38,14 @@ header h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-items: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .main .content form {
-  margin-right: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   padding: 50px 0;
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -106,25 +108,25 @@ header h1 {
 }
 
 .main .content form .content .input-content .error {
-  font-size: 13px;
+  font-size: 10px;
   position: absolute;
-  bottom: -17px;
+  bottom: -25px;
   left: 0;
   display: none;
 }
 
 .main .content .popup {
+  background-color: rgba(231, 76, 60, 0.5);
+  position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: rgba(231, 76, 60, 0.5);
-  position: relative;
+  padding: 5%;
   display: none;
 }
 
-.main .content .popup .content {
-  position: absolute;
-  width: 70%;
+.main .content .popup .pop-content {
+  position: relative;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -133,14 +135,14 @@ header h1 {
   padding: 40px 0;
 }
 
-.main .content .popup .content .reg-title {
+.main .content .popup .pop-content .reg-title {
   text-align: center;
   font-size: 20px;
   text-transform: capitalize;
   vertical-align: middle;
 }
 
-.main .content .popup .content .close {
+.main .content .popup .pop-content .close {
   position: absolute;
   right: 0;
   top: 0;
@@ -155,7 +157,7 @@ header h1 {
   transition: all .3s ease-in-out;
 }
 
-.main .content .popup .content .close:hover {
+.main .content .popup .pop-content .close:hover {
   background-color: #bdc3c7;
   font-weight: 700;
   -webkit-box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.15);

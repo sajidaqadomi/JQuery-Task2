@@ -4,7 +4,8 @@ $(document).ready(function () {
         //emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
         popup=$('.popup'),
         pId,
-        msg;
+        msg,
+        timer=30;
     //padding for body    
     $('body').css('paddingTop',headerHeigh+50);
 
@@ -18,10 +19,10 @@ $(document).ready(function () {
         },1000)
     }
    
-    input.not('#_submit').focus((e)=>animat(e.target.id,'100%'));
-
-
-    input.not('#_submit').blur(function(){
+    input.not('#_submit')
+        .focus(
+        (e)=>animat(e.target.id,'100%'))
+        .blur(function(){
         animat();
 
         //validate 
@@ -32,8 +33,10 @@ $(document).ready(function () {
         }
        
 
-    })
+    });
 
+
+ 
     $('form').on('submit',function(e){
         e.preventDefault();
         let email=$('#_email'),
@@ -42,6 +45,17 @@ $(document).ready(function () {
         popup.fadeIn(3000);
         email.val('');
         password.val('');
+        let popTime=setInterval(() => {
+            timer-=1;
+            //console.log(timer);
+            if(timer==0){
+                clearInterval(popTime)
+                popup.click();
+
+            }
+           
+            
+        }, 1000);
 
 
     })
@@ -49,16 +63,20 @@ $(document).ready(function () {
     //show popup
     popup.click(function(e) {
         $(this).fadeOut(3000);
+        //console.log('clock');
+
     });
-    $(".popup .content").click(function(e) {
+    $(".popup .pop-content").click(function(e) {
         e.stopPropagation();
     });
 
     $(".close").click(function(e) {
         e.preventDefault();
+        
         $(this)
             .parents(".popup")
             .fadeOut(3000);
+            
     });
     //esc code
     $(document).keydown(function(e) {
